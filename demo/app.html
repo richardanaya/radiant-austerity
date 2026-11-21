@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Radiant Austerity UI Kit — press desk</title>
+    <meta name="description" content="A press desk built from Radiant Austerity UI Kit." />
+    <meta name="theme-color" content="#F1F0DB" />
+  </head>
+  <body>
+    <div class="page">
+      <nav class="nav" aria-label="Sheets">
+        <a href="./">Fig. 00 · Release sheet</a>
+        <a href="./gallery.html">Fig. 01 · Gallery</a>
+        <a href="./app.html" aria-current="page">Fig. 02 · App</a>
+      </nav>
+      <ra-sheet label="Press desk">
+        <ra-crosshair corner="nw"></ra-crosshair>
+        <ra-crosshair corner="ne"></ra-crosshair>
+        <ra-crosshair corner="sw"></ra-crosshair>
+        <ra-crosshair corner="se"></ra-crosshair>
+        <ra-sheet-margin side="start">App · press desk</ra-sheet-margin>
+        <ra-sheet-margin side="end">Rev. 0.1.0</ra-sheet-margin>
+        <header class="mast">
+          <h1 class="brand"><ra-star></ra-star> Press desk</h1>
+          <p class="kicker">Settings<br />A plate, in use</p>
+          <ra-sheet-meta number="003" sheet="1" of="1" revision="0.1.0" date="2026-11-21"></ra-sheet-meta>
+        </header>
+        <ra-ruler from="0" to="12"></ra-ruler>
+        <div class="stack">
+          <ra-breadcrumb label="Desk">
+            <ra-breadcrumb-item><a href="./">Kit</a></ra-breadcrumb-item>
+            <ra-breadcrumb-item>Press desk</ra-breadcrumb-item>
+          </ra-breadcrumb>
+          <ra-toolbar aria-label="Desk tools">
+            <ra-toolbar-button><button type="button">Proof</button></ra-toolbar-button>
+            <ra-toolbar-separator></ra-toolbar-separator>
+            <ra-toolbar-button><button type="button">File</button></ra-toolbar-button>
+            <ra-toolbar-input><input aria-label="Find a sheet" placeholder="Find a sheet" /></ra-toolbar-input>
+          </ra-toolbar>
+          <ra-alert id="desk-alert">Desk is live. Yellow marks the action.</ra-alert>
+          <div class="row">
+            <ra-card label="Operator">
+              <ra-avatar><ra-avatar-fallback>RA</ra-avatar-fallback></ra-avatar>
+              <ra-field>
+                <ra-field-label>Operator</ra-field-label>
+                <ra-input><input name="operator" value="Richard" autocomplete="off" /></ra-input>
+              </ra-field>
+              <ra-field>
+                <ra-field-label>Passphrase</ra-field-label>
+                <ra-password-input>
+                  <input type="password" aria-label="Desk passphrase" value="ink" />
+                  <ra-password-input-toggle><button type="button">Show passphrase</button></ra-password-input-toggle>
+                </ra-password-input>
+              </ra-field>
+              <label>Night shift <ra-switch id="night-shift" aria-label="Night shift"><ra-switch-thumb></ra-switch-thumb></ra-switch></label>
+            </ra-card>
+            <ra-card label="Press">
+              <ra-segmented-control id="finish" aria-label="Finish" value="matte">
+                <ra-segmented-control-item value="matte">Matte</ra-segmented-control-item>
+                <ra-segmented-control-item value="gloss">Gloss</ra-segmented-control-item>
+              </ra-segmented-control>
+              <ra-select id="paper" aria-label="Paper stock">
+                <ra-select-trigger><button type="button"><ra-select-value>Warm</ra-select-value></button></ra-select-trigger>
+                <ra-select-content hidden>
+                  <ra-select-item value="warm">Warm</ra-select-item>
+                  <ra-select-item value="cool">Cool</ra-select-item>
+                </ra-select-content>
+              </ra-select>
+              <ra-slider id="contrast" aria-label="Contrast" default-value="55">
+                <ra-slider-control>
+                  <ra-slider-track>
+                    <ra-slider-indicator></ra-slider-indicator>
+                    <ra-slider-thumb></ra-slider-thumb>
+                  </ra-slider-track>
+                </ra-slider-control>
+              </ra-slider>
+              <ra-number-input id="copies" aria-label="Copies" value="12">
+                <ra-number-input-group>
+                  <ra-number-input-decrement><button type="button" aria-label="Fewer copies">−</button></ra-number-input-decrement>
+                  <ra-number-input-control><input aria-label="Copies" /></ra-number-input-control>
+                  <ra-number-input-increment><button type="button" aria-label="More copies">+</button></ra-number-input-increment>
+                </ra-number-input-group>
+              </ra-number-input>
+              <ra-progress aria-label="Run" value="70"><ra-progress-track><ra-progress-indicator></ra-progress-indicator></ra-progress-track></ra-progress>
+              <ra-meter aria-label="Ink" value="35"><ra-meter-track><ra-meter-indicator></ra-meter-indicator></ra-meter-track></ra-meter>
+            </ra-card>
+          </div>
+          <ra-accordion>
+            <ra-accordion-item value="notes">
+              <ra-accordion-header>
+                <h2><ra-accordion-trigger><button type="button">Run notes</button></ra-accordion-trigger></h2>
+              </ra-accordion-header>
+              <ra-accordion-panel>
+                <ra-textarea><textarea aria-label="Run notes" rows="3">Keep the hairline. Ink on cream.</textarea></ra-textarea>
+              </ra-accordion-panel>
+            </ra-accordion-item>
+          </ra-accordion>
+          <ra-pagination id="desk-pages" page-count="3" aria-label="Desk pages">
+            <ra-pagination-list>
+              <ra-pagination-item><ra-pagination-previous><button type="button">Previous page</button></ra-pagination-previous></ra-pagination-item>
+              <ra-pagination-item><ra-pagination-link page="1"><button type="button">Page 1</button></ra-pagination-link></ra-pagination-item>
+              <ra-pagination-item><ra-pagination-link page="2"><button type="button">Page 2</button></ra-pagination-link></ra-pagination-item>
+              <ra-pagination-item><ra-pagination-link page="3"><button type="button">Page 3</button></ra-pagination-link></ra-pagination-item>
+              <ra-pagination-item><ra-pagination-next><button type="button">Next page</button></ra-pagination-next></ra-pagination-item>
+            </ra-pagination-list>
+          </ra-pagination>
+          <p class="log" id="desk-log" aria-live="polite"></p>
+        </div>
+      </ra-sheet>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
