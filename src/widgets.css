@@ -227,10 +227,51 @@ ra-listbox-item[aria-selected="true"],
 ra-command-item[data-selected],
 ra-menu-item[data-highlighted],
 ra-select-item[data-highlighted],
-ra-combobox-item[data-highlighted],
-ra-pagination-link[data-current] {
+ra-combobox-item[data-highlighted] {
   background: var(--ra-ink);
   color: var(--ra-on-ink);
+}
+
+ra-pagination-item {
+  display: flex;
+  flex: 0 0 auto;
+  width: auto;
+  min-width: max-content;
+  max-width: 100%;
+}
+
+/* The link, previous, and next hosts are display:contents, so the button
+   is the layout box. Size it to the label. A fixed icon width lets the
+   label paint over the next item. */
+:is(
+  [data-slot="pagination-link"],
+  [data-slot="pagination-previous"],
+  [data-slot="pagination-next"]
+) {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: auto;
+  max-width: none;
+  height: auto;
+  min-width: max-content;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid transparent;
+  background: transparent;
+  white-space: nowrap;
+}
+
+:is(
+  [data-slot="pagination-link"][data-current],
+  [data-slot="pagination-link"][aria-current="page"]
+) {
+  border-color: var(--ink);
+  background: var(--ra-paper);
+  color: var(--ink);
 }
 
 ra-slider {
@@ -610,6 +651,11 @@ ra-breadcrumb {
   text-transform: uppercase;
 }
 
+ra-breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+}
+
 ra-breadcrumb-item:not(:last-child)::after {
   content: "/";
   margin-left: 0.45rem;
@@ -744,20 +790,25 @@ ra-rating-item[data-filled] {
   }
 
   ra-pagination-list {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.35rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
     width: 100%;
   }
 
-  ra-pagination-item:first-child,
-  ra-pagination-item:last-child {
-    grid-column: 1 / -1;
+  :is(
+    [data-slot="pagination-link"],
+    [data-slot="pagination-previous"],
+    [data-slot="pagination-next"]
+  ) {
+    width: auto;
+    min-width: 44px;
+    min-height: 44px;
   }
 
-  ra-pagination button {
-    width: 100%;
-    justify-content: center;
+  ra-breadcrumb-item,
+  ra-breadcrumb-item a {
+    min-height: 44px;
   }
 
   ra-calendar-day {
@@ -798,6 +849,23 @@ ra-rating-item[data-filled] {
     align-items: center;
     min-height: 44px;
     max-width: 100%;
+  }
+}
+
+@media (pointer: coarse) {
+  :is(
+    [data-slot="pagination-link"],
+    [data-slot="pagination-previous"],
+    [data-slot="pagination-next"]
+  ) {
+    width: auto;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  ra-breadcrumb-item,
+  ra-breadcrumb-item a {
+    min-height: 44px;
   }
 }
 
