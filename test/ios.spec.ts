@@ -243,6 +243,73 @@ test("iPhone pagination items do not overlap", async ({ page }) => {
   publishShot("pagination-after-iphone.png");
 });
 
+test("iPhone breadcrumb shares a center and the Next icon follows its label", async ({ page }) => {
+  await page.goto("/gallery.html");
+  const breadcrumb = page.locator("ra-breadcrumb");
+  await breadcrumb.scrollIntoViewIfNeeded();
+  const crumb = await breadcrumb.locator("ra-breadcrumb-item").evaluateAll(els =>
+    els.map(el => {
+      const item = el.getBoundingClientRect();
+      const link = el.querySelector("a");
+      const host = link ?? el;
+      const textNode = [...host.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent?.trim());
+      const range = document.createRange();
+      if (textNode) range.selectNodeContents(textNode);
+      else range.selectNodeContents(host);
+      const text = range.getBoundingClientRect();
+      return {
+        height: item.height,
+        linkHeight: link ? link.getBoundingClientRect().height : item.height,
+        center: (text.top + text.bottom) / 2,
+      };
+    }),
+  );
+  expect(crumb.length).toBeGreaterThan(1);
+  for (const item of crumb) {
+    expect(item.height).toBeGreaterThanOrEqual(44);
+    expect(item.linkHeight).toBeGreaterThanOrEqual(44);
+  }
+  for (let i = 0; i < crumb.length - 1; i += 1) {
+    expect(Math.abs(crumb[i].center - crumb[i + 1].center)).toBeLessThanOrEqual(2);
+  }
+
+  const next = await page.locator("[data-slot='pagination-next']").evaluate(el => {
+    const textNode = [...el.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent?.trim());
+    const range = document.createRange();
+    range.selectNodeContents(textNode ?? el);
+    const label = range.getBoundingClientRect();
+    const host = el.getBoundingClientRect();
+    const style = getComputedStyle(el);
+    const icon = getComputedStyle(el, "::before");
+    const iconWidth = parseFloat(icon.width);
+    const contentLeft = host.left + parseFloat(style.borderLeftWidth) + parseFloat(style.paddingLeft);
+    const contentRight = host.right - parseFloat(style.borderRightWidth) - parseFloat(style.paddingRight);
+    const spaceBefore = label.left - contentLeft;
+    const spaceAfter = contentRight - label.right;
+    const iconX = spaceAfter > spaceBefore ? contentRight - iconWidth : contentLeft;
+    return { iconX, labelX: label.left };
+  });
+  expect(next.iconX).toBeGreaterThan(next.labelX);
+
+  const prev = await page.locator("[data-slot='pagination-previous']").evaluate(el => {
+    const textNode = [...el.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent?.trim());
+    const range = document.createRange();
+    range.selectNodeContents(textNode ?? el);
+    const label = range.getBoundingClientRect();
+    const host = el.getBoundingClientRect();
+    const style = getComputedStyle(el);
+    const icon = getComputedStyle(el, "::before");
+    const iconWidth = parseFloat(icon.width);
+    const contentLeft = host.left + parseFloat(style.borderLeftWidth) + parseFloat(style.paddingLeft);
+    const contentRight = host.right - parseFloat(style.borderRightWidth) - parseFloat(style.paddingRight);
+    const spaceBefore = label.left - contentLeft;
+    const spaceAfter = contentRight - label.right;
+    const iconX = spaceAfter > spaceBefore ? contentRight - iconWidth : contentLeft;
+    return { iconX, labelX: label.left };
+  });
+  expect(prev.labelX).toBeGreaterThan(prev.iconX);
+});
+
 test("iPhone menu, checkbox, toast, and stepper keep their boxes", async ({ page }) => {
   await page.goto("/gallery.html");
 

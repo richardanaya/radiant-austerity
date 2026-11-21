@@ -274,6 +274,10 @@ ra-pagination-item {
   color: var(--ink);
 }
 
+[data-slot="pagination-next"] {
+  flex-direction: row-reverse;
+}
+
 ra-slider {
   display: grid;
   gap: 0.35rem;
@@ -651,13 +655,15 @@ ra-breadcrumb {
   text-transform: uppercase;
 }
 
-ra-breadcrumb-item {
+ra-breadcrumb-item,
+ra-breadcrumb-item a {
   display: inline-flex;
   align-items: center;
 }
 
 ra-breadcrumb-item:not(:last-child)::after {
   content: "/";
+  align-self: center;
   margin-left: 0.45rem;
 }
 
