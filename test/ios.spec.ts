@@ -174,6 +174,75 @@ test("iPhone WebKit keeps icon labels clipped and the plate readable", async ({ 
   await shot(page, "iphone-after-toast.png");
 });
 
+test("iPhone pagination items do not overlap", async ({ page }) => {
+  await page.goto("/gallery.html");
+  const pagination = page.locator("ra-pagination[aria-label='Gallery pages']");
+  await pagination.scrollIntoViewIfNeeded();
+  const items = await pagination.locator("ra-pagination-item").evaluateAll(els =>
+    els.map(el => {
+      const rect = el.getBoundingClientRect();
+      const button = el.querySelector("button");
+      const style = button ? getComputedStyle(button) : null;
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const text = range.getBoundingClientRect();
+      return {
+        left: rect.left,
+        right: rect.right,
+        top: rect.top,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+        textLeft: text.left,
+        textRight: text.right,
+        borderTopWidth: style ? parseFloat(style.borderTopWidth) : 0,
+        borderLeftWidth: style ? parseFloat(style.borderLeftWidth) : 0,
+        borderTopStyle: style?.borderTopStyle ?? "",
+        paddingLeft: style ? parseFloat(style.paddingLeft) : 0,
+        boxSizing: style?.boxSizing ?? "",
+        current: button?.getAttribute("aria-current") === "page" || button?.hasAttribute("data-current") || false,
+      };
+    }),
+  );
+  expect(items.length).toBeGreaterThan(1);
+  for (const item of items) {
+    expect(item.width).toBeGreaterThanOrEqual(44);
+    expect(item.height).toBeGreaterThanOrEqual(44);
+    expect(item.textLeft).toBeGreaterThanOrEqual(item.left - 0.5);
+    expect(item.textRight).toBeLessThanOrEqual(item.right + 0.5);
+  }
+  const current = items.find(item => item.current);
+  expect(current).toBeTruthy();
+  expect(current?.borderTopWidth).toBe(1);
+  expect(current?.borderLeftWidth).toBe(1);
+  expect(current?.borderTopStyle).toBe("solid");
+  expect(current?.paddingLeft).toBeGreaterThan(0);
+  expect(current?.boxSizing).toBe("border-box");
+  for (let i = 0; i < items.length - 1; i += 1) {
+    const a = items[i];
+    const b = items[i + 1];
+    const overlap = a.left < b.right - 0.5 && b.left < a.right - 0.5 && a.top < b.bottom - 0.5 && b.top < a.bottom - 0.5;
+    expect(overlap).toBe(false);
+  }
+  const crumb = await page.locator("ra-breadcrumb-item").evaluateAll(els =>
+    els.map(el => {
+      const rect = el.getBoundingClientRect();
+      return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom, height: rect.height };
+    }),
+  );
+  expect(crumb.length).toBeGreaterThan(1);
+  for (const item of crumb) expect(item.height).toBeGreaterThanOrEqual(44);
+  for (let i = 0; i < crumb.length - 1; i += 1) {
+    const a = crumb[i];
+    const b = crumb[i + 1];
+    const overlap = a.left < b.right - 0.5 && b.left < a.right - 0.5 && a.top < b.bottom - 0.5 && b.top < a.bottom - 0.5;
+    expect(overlap).toBe(false);
+  }
+  mkdirSync("test-results", { recursive: true });
+  await pagination.screenshot({ path: "test-results/pagination-after-iphone.png" });
+  publishShot("pagination-after-iphone.png");
+});
+
 test("iPhone menu, checkbox, toast, and stepper keep their boxes", async ({ page }) => {
   await page.goto("/gallery.html");
 
