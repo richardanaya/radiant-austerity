@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Radiant Austerity UI Kit — gallery</title>
+    <meta name="description" content="Gallery of Radiant Austerity UI Kit parts: cream, ink, yellow actions, and striped swatches." />
+    <meta name="theme-color" content="#F1F0DB" />
+  </head>
+  <body>
+    <div class="page">
+      <nav class="nav" aria-label="Sheets">
+        <a href="./">Fig. 00 · Release sheet</a>
+        <a href="./gallery.html" aria-current="page">Fig. 01 · Gallery</a>
+        <a href="./app.html">Fig. 02 · App</a>
+      </nav>
+      <ra-sheet label="Radiant Austerity UI Kit component gallery">
+        <ra-crosshair corner="nw"></ra-crosshair>
+        <ra-crosshair corner="ne"></ra-crosshair>
+        <ra-crosshair corner="sw"></ra-crosshair>
+        <ra-crosshair corner="se"></ra-crosshair>
+        <ra-sheet-margin side="start">Gallery · parts and controls</ra-sheet-margin>
+        <ra-sheet-margin side="end">Rev. 0.1.0</ra-sheet-margin>
+        <header class="mast">
+          <h1 class="brand"><ra-star></ra-star> Gallery</h1>
+          <p class="kicker">Specimens<br />Cream sheet, ink rules</p>
+          <ra-sheet-meta number="002" sheet="1" of="1" revision="0.1.0" date="2026-11-21"></ra-sheet-meta>
+        </header>
+        <ra-ruler from="0" to="12"></ra-ruler>
+        <div class="stack">
+          <section class="specimen">
+            <h2>00 · Tokens</h2>
+            <div class="swatches">
+              <div class="swatch" style="background: var(--cream)"><span>Cream</span></div>
+              <div class="swatch ink"><span>Ink</span></div>
+              <div class="swatch" style="background: var(--yellow)"><span>Yellow</span></div>
+            </div>
+            <div class="stripes token-stripes" aria-hidden="true">
+              <span class="stripe-y"></span>
+              <span class="stripe-c"></span>
+              <span class="stripe-g"></span>
+              <span class="stripe-m"></span>
+            </div>
+            <div class="bar" aria-hidden="true"></div>
+            <p class="kicker">Inter for the interface. Geist Serif for prose. Orange is the bar and the reticle.</p>
+          </section>
+          <section class="specimen">
+            <h2>01 · Marks</h2>
+            <div class="row">
+              <ra-star></ra-star>
+              <ra-pill variant="yellow">Yellow stripe</ra-pill>
+              <ra-pill variant="cyan">Cyan stripe</ra-pill>
+              <ra-pill variant="lime">Lime stripe</ra-pill>
+              <ra-pill variant="magenta">Magenta stripe</ra-pill>
+              <ra-pill variant="ink">Filled ink</ra-pill>
+              <ra-badge variant="outline">Outline badge</ra-badge>
+              <ra-tag>Tag chip</ra-tag>
+            </div>
+            <ra-version-hero value="0.1.0"></ra-version-hero>
+          </section>
+          <section class="specimen">
+            <h2>02 · Plate hardware</h2>
+            <ra-barcode value="RADIANT"></ra-barcode>
+            <div class="row">
+              <ra-qr value="https://richardanaya.github.io/radiant-austerity/"></ra-qr>
+              <ra-seal text="RADIANT AUSTERITY UI KIT · GALLERY · "></ra-seal>
+            </div>
+            <ra-prose>Long-form reading stays in Geist Serif. The rest of this sheet is Inter.</ra-prose>
+          </section>
+          <section class="specimen">
+            <h2>03 · Button, field, toggle</h2>
+            <div class="row">
+              <ra-button>
+                <button type="button" data-variant="yellow" id="mark-button">Mark the plate</button>
+              </ra-button>
+              <ra-button>
+                <button type="button" data-variant="ink">File it</button>
+              </ra-button>
+              <ra-button>
+                <button type="button">Outline</button>
+              </ra-button>
+            </div>
+            <p id="mark-log" class="log" aria-live="polite"></p>
+            <ra-field>
+              <ra-field-label>Plate title</ra-field-label>
+              <ra-input>
+                <input name="title" autocomplete="off" />
+              </ra-input>
+            </ra-field>
+            <ra-toggle-group aria-label="Ink weight">
+              <ra-toggle value="regular">
+                <button type="button">Regular</button>
+              </ra-toggle>
+              <ra-toggle value="bold">
+                <button type="button">Bold</button>
+              </ra-toggle>
+            </ra-toggle-group>
+          </section>
+          <section class="specimen">
+            <h2>04 · Tabs, dialog, tooltip</h2>
+            <ra-tabs default-value="tokens">
+              <ra-tabs-list aria-label="Kit sections">
+                <ra-tabs-tab value="tokens"><button type="button">Tokens</button></ra-tabs-tab>
+                <ra-tabs-tab value="parts"><button type="button">Parts</button></ra-tabs-tab>
+              </ra-tabs-list>
+              <ra-tabs-panel value="tokens">Cream, ink, yellow, and the striped swatches.</ra-tabs-panel>
+              <ra-tabs-panel value="parts">Sheet, callout, seal, and barcode.</ra-tabs-panel>
+            </ra-tabs>
+            <div class="row">
+              <ra-dialog>
+                <ra-dialog-trigger>
+                  <button type="button">Open plate</button>
+                </ra-dialog-trigger>
+                <ra-dialog-backdrop hidden></ra-dialog-backdrop>
+                <ra-dialog-content hidden>
+                  <ra-dialog-title>Plate notes</ra-dialog-title>
+                  <ra-dialog-description>Focus stays inside until the plate is closed.</ra-dialog-description>
+                  <ra-dialog-close>
+                    <button type="button">Close</button>
+                  </ra-dialog-close>
+                </ra-dialog-content>
+              </ra-dialog>
+              <ra-tooltip>
+                <ra-tooltip-trigger>
+                  <button type="button">Hint</button>
+                </ra-tooltip-trigger>
+                <ra-tooltip-content>Orange reticle</ra-tooltip-content>
+              </ra-tooltip>
+            </div>
+          </section>
+          <section class="specimen" id="forms">
+            <h2>05 · Forms</h2>
+            <ra-checkbox-group aria-label="Marks">
+              <label><ra-checkbox value="mark"><ra-checkbox-indicator></ra-checkbox-indicator></ra-checkbox> Mark</label>
+              <label><ra-checkbox value="seal"><ra-checkbox-indicator></ra-checkbox-indicator></ra-checkbox> Seal</label>
+            </ra-checkbox-group>
+            <ra-radio-group aria-label="Weight" value="regular">
+              <label><ra-radio value="regular"><ra-radio-indicator></ra-radio-indicator></ra-radio> Regular</label>
+              <label><ra-radio value="bold"><ra-radio-indicator></ra-radio-indicator></ra-radio> Bold weight</label>
+            </ra-radio-group>
+            <label>Published <ra-switch aria-label="Published"><ra-switch-thumb></ra-switch-thumb></ra-switch></label>
+            <ra-slider aria-label="Contrast" default-value="40">
+              <ra-slider-control>
+                <ra-slider-track>
+                  <ra-slider-indicator></ra-slider-indicator>
+                  <ra-slider-thumb></ra-slider-thumb>
+                </ra-slider-track>
+              </ra-slider-control>
+            </ra-slider>
+            <ra-select aria-label="Paper">
+              <ra-select-trigger><button type="button"><ra-select-value>Warm</ra-select-value></button></ra-select-trigger>
+              <ra-select-content hidden>
+                <ra-select-item value="warm">Warm</ra-select-item>
+                <ra-select-item value="ink">Ink</ra-select-item>
+              </ra-select-content>
+            </ra-select>
+            <ra-combobox aria-label="City">
+              <ra-combobox-input><input aria-label="City" placeholder="City" /></ra-combobox-input>
+              <ra-combobox-content hidden>
+                <ra-combobox-item value="Lisbon">Lisbon</ra-combobox-item>
+                <ra-combobox-item value="Kyoto">Kyoto</ra-combobox-item>
+              </ra-combobox-content>
+            </ra-combobox>
+            <ra-autocomplete aria-label="Glyph">
+              <ra-autocomplete-input><input aria-label="Glyph" /></ra-autocomplete-input>
+              <ra-autocomplete-content hidden>
+                <ra-autocomplete-item value="Mark">Mark</ra-autocomplete-item>
+                <ra-autocomplete-item value="Seal">Seal</ra-autocomplete-item>
+              </ra-autocomplete-content>
+            </ra-autocomplete>
+            <ra-listbox aria-label="Plate size">
+              <ra-listbox-item value="a4">A4</ra-listbox-item>
+              <ra-listbox-item value="a3">A3</ra-listbox-item>
+            </ra-listbox>
+            <ra-segmented-control aria-label="Finish" value="matte">
+              <ra-segmented-control-item value="matte">Matte</ra-segmented-control-item>
+              <ra-segmented-control-item value="gloss">Gloss</ra-segmented-control-item>
+            </ra-segmented-control>
+            <ra-number-input aria-label="Copies" value="2">
+              <ra-number-input-group>
+                <ra-number-input-decrement><button type="button">−</button></ra-number-input-decrement>
+                <ra-number-input-control><input aria-label="Copies" /></ra-number-input-control>
+                <ra-number-input-increment><button type="button">+</button></ra-number-input-increment>
+              </ra-number-input-group>
+            </ra-number-input>
+            <ra-password-input>
+              <input type="password" aria-label="Passphrase" value="plate" />
+              <ra-password-input-toggle><button type="button">Show</button></ra-password-input-toggle>
+            </ra-password-input>
+            <ra-otp-input aria-label="One-time code" length="4"></ra-otp-input>
+            <ra-file-input aria-label="Plate file">
+              <ra-file-input-trigger><button type="button">Choose file</button></ra-file-input-trigger>
+              <ra-file-input-list></ra-file-input-list>
+            </ra-file-input>
+            <ra-textarea>
+              <textarea aria-label="Notes" rows="2"></textarea>
+            </ra-textarea>
+            <ra-rating aria-label="Plate score" max="5">
+              <ra-rating-item index="1"><ra-rating-radio value="1">1</ra-rating-radio></ra-rating-item>
+              <ra-rating-item index="2"><ra-rating-radio value="2">2</ra-rating-radio></ra-rating-item>
+              <ra-rating-item index="3"><ra-rating-radio value="3">3</ra-rating-radio></ra-rating-item>
+              <ra-rating-item index="4"><ra-rating-radio value="4">4</ra-rating-radio></ra-rating-item>
+              <ra-rating-item index="5"><ra-rating-radio value="5">5</ra-rating-radio></ra-rating-item>
+            </ra-rating>
+          </section>
+          <section class="specimen" id="overlays">
+            <h2>06 · Overlays</h2>
+            <div class="row">
+              <ra-alert-dialog>
+                <ra-alert-dialog-trigger><button type="button">Confirm scrap</button></ra-alert-dialog-trigger>
+                <ra-alert-dialog-backdrop hidden></ra-alert-dialog-backdrop>
+                <ra-alert-dialog-content hidden>
+                  <ra-alert-dialog-title>Scrap this plate?</ra-alert-dialog-title>
+                  <ra-alert-dialog-description>The sheet leaves the press.</ra-alert-dialog-description>
+                  <ra-alert-dialog-close><button type="button">Keep it</button></ra-alert-dialog-close>
+                </ra-alert-dialog-content>
+              </ra-alert-dialog>
+              <ra-drawer>
+                <ra-drawer-trigger><button type="button">Open drawer</button></ra-drawer-trigger>
+                <ra-drawer-backdrop hidden></ra-drawer-backdrop>
+                <ra-drawer-content hidden>
+                  <ra-drawer-title>Drawer</ra-drawer-title>
+                  <ra-drawer-description>Notes slide in from the edge.</ra-drawer-description>
+                  <ra-drawer-close><button type="button">Close drawer</button></ra-drawer-close>
+                </ra-drawer-content>
+              </ra-drawer>
+              <ra-popover>
+                <ra-popover-trigger><button type="button" id="open-popover">Open popover</button></ra-popover-trigger>
+                <ra-popover-content hidden>
+                  <ra-popover-title>Callout</ra-popover-title>
+                  <ra-popover-description>Pinned under the trigger.</ra-popover-description>
+                  <ra-popover-close><button type="button">Close popover</button></ra-popover-close>
+                </ra-popover-content>
+              </ra-popover>
+              <ra-hover-card>
+                <ra-hover-card-trigger><a href="#overlays">Hover the mark</a></ra-hover-card-trigger>
+                <ra-hover-card-content hidden>Orange reticle, plate mark.</ra-hover-card-content>
+              </ra-hover-card>
+              <ra-menu>
+                <ra-menu-trigger><button type="button" id="open-menu">Open menu</button></ra-menu-trigger>
+                <ra-menu-content hidden>
+                  <ra-menu-item value="file">File the plate</ra-menu-item>
+                  <ra-menu-separator></ra-menu-separator>
+                  <ra-menu-item value="scrap">Scrap it</ra-menu-item>
+                </ra-menu-content>
+              </ra-menu>
+            </div>
+            <ra-menubar aria-label="Plate menus">
+              <ra-menu>
+                <ra-menu-trigger><button type="button">File</button></ra-menu-trigger>
+                <ra-menu-content hidden>
+                  <ra-menu-item value="new">New sheet</ra-menu-item>
+                </ra-menu-content>
+              </ra-menu>
+            </ra-menubar>
+            <ra-trigger-menu>
+              <ra-trigger-menu-input><textarea aria-label="Command line" rows="2"></textarea></ra-trigger-menu-input>
+              <ra-trigger-menu-content hidden>
+                <ra-trigger-menu-item value="reticle">Insert reticle</ra-trigger-menu-item>
+                <ra-trigger-menu-item value="seal">Insert seal</ra-trigger-menu-item>
+              </ra-trigger-menu-content>
+            </ra-trigger-menu>
+            <ra-button><button type="button" id="post-note">Post a note</button></ra-button>
+            <ra-toast-region></ra-toast-region>
+            <ra-command aria-label="Command palette">
+              <ra-command-input><input aria-label="Command search" placeholder="Search the plate" /></ra-command-input>
+              <ra-command-list>
+                <ra-command-item value="gallery">Open gallery</ra-command-item>
+                <ra-command-item value="sheet">Open sheet</ra-command-item>
+              </ra-command-list>
+              <ra-command-empty hidden>No match</ra-command-empty>
+            </ra-command>
+          </section>
+          <section class="specimen">
+            <h2>07 · Layout</h2>
+            <ra-accordion>
+              <ra-accordion-item value="ink">
+                <ra-accordion-header><h3><ra-accordion-trigger><button type="button">Ink</button></ra-accordion-trigger></h3></ra-accordion-header>
+                <ra-accordion-panel>Ink field, cream type.</ra-accordion-panel>
+              </ra-accordion-item>
+              <ra-accordion-item value="paper">
+                <ra-accordion-header><h3><ra-accordion-trigger><button type="button">Paper</button></ra-accordion-trigger></h3></ra-accordion-header>
+                <ra-accordion-panel>Cream sheet, #f1f0db.</ra-accordion-panel>
+              </ra-accordion-item>
+            </ra-accordion>
+            <ra-collapsible>
+              <ra-collapsible-trigger><button type="button">Fine print</button></ra-collapsible-trigger>
+              <ra-collapsible-panel hidden>Hairline rules and the footer.</ra-collapsible-panel>
+            </ra-collapsible>
+            <ra-separator></ra-separator>
+            <ra-scroll-area>
+              <ra-scroll-area-viewport>
+                <ra-scroll-area-content>
+                  <p>Line 01 of the change list.</p>
+                  <p>Line 02 of the change list.</p>
+                  <p>Line 03 of the change list.</p>
+                  <p>Line 04 of the change list.</p>
+                  <p>Line 05 of the change list.</p>
+                  <p>Line 06 of the change list.</p>
+                </ra-scroll-area-content>
+              </ra-scroll-area-viewport>
+              <ra-scroll-area-scrollbar orientation="vertical"><ra-scroll-area-thumb></ra-scroll-area-thumb></ra-scroll-area-scrollbar>
+            </ra-scroll-area>
+            <ra-resizable>
+              <ra-resizable-panel id="left">Left plate</ra-resizable-panel>
+              <ra-resizable-handle aria-label="Resize panels"></ra-resizable-handle>
+              <ra-resizable-panel id="right">Right plate</ra-resizable-panel>
+            </ra-resizable>
+            <ra-card label="Specimen card">
+              <ra-avatar><ra-avatar-fallback>RA</ra-avatar-fallback></ra-avatar>
+              <p>A sheet panel for a short note.</p>
+            </ra-card>
+            <ra-progress aria-label="Press" value="60"><ra-progress-track><ra-progress-indicator></ra-progress-indicator></ra-progress-track></ra-progress>
+            <ra-meter aria-label="Ink level" value="40"><ra-meter-track><ra-meter-indicator></ra-meter-indicator></ra-meter-track></ra-meter>
+            <ra-alert>The plate is on the press.</ra-alert>
+            <ra-spinner label="Pulling a proof"></ra-spinner>
+            <ra-skeleton></ra-skeleton>
+          </section>
+          <section class="specimen">
+            <h2>08 · Navigation and dates</h2>
+            <ra-breadcrumb label="Sheets">
+              <ra-breadcrumb-item><a href="./">Release</a></ra-breadcrumb-item>
+              <ra-breadcrumb-item>Gallery</ra-breadcrumb-item>
+            </ra-breadcrumb>
+            <ra-pagination page-count="3" aria-label="Gallery pages">
+              <ra-pagination-list>
+                <ra-pagination-item><ra-pagination-previous><button type="button">Prev</button></ra-pagination-previous></ra-pagination-item>
+                <ra-pagination-item><ra-pagination-link page="1"><button type="button">1</button></ra-pagination-link></ra-pagination-item>
+                <ra-pagination-item><ra-pagination-link page="2"><button type="button">2</button></ra-pagination-link></ra-pagination-item>
+                <ra-pagination-item><ra-pagination-link page="3"><button type="button">3</button></ra-pagination-link></ra-pagination-item>
+                <ra-pagination-item><ra-pagination-next><button type="button">Next</button></ra-pagination-next></ra-pagination-item>
+              </ra-pagination-list>
+            </ra-pagination>
+            <ra-navigation-menu aria-label="Kit map">
+              <ra-navigation-menu-list>
+                <ra-navigation-menu-item>
+                  <ra-navigation-menu-trigger><button type="button">Parts</button></ra-navigation-menu-trigger>
+                  <ra-navigation-menu-content hidden>
+                    <ra-navigation-menu-link><a href="#forms">Forms</a></ra-navigation-menu-link>
+                  </ra-navigation-menu-content>
+                </ra-navigation-menu-item>
+              </ra-navigation-menu-list>
+            </ra-navigation-menu>
+            <ra-toolbar aria-label="Plate tools">
+              <ra-toolbar-button><button type="button">Rule</button></ra-toolbar-button>
+              <ra-toolbar-separator></ra-toolbar-separator>
+              <ra-toolbar-button><button type="button">Reticle</button></ra-toolbar-button>
+            </ra-toolbar>
+            <ra-calendar aria-label="Press calendar">
+              <ra-calendar-heading data-ra-heading></ra-calendar-heading>
+              <div class="row">
+                <ra-calendar-previous><button type="button">Previous month</button></ra-calendar-previous>
+                <ra-calendar-next><button type="button">Next month</button></ra-calendar-next>
+              </div>
+              <ra-calendar-grid>
+                <ra-calendar-weekdays data-ra-weekdays></ra-calendar-weekdays>
+                <div data-ra-weeks></div>
+              </ra-calendar-grid>
+            </ra-calendar>
+            <ra-date-picker>
+              <ra-date-picker-trigger><button type="button">Choose date</button></ra-date-picker-trigger>
+              <ra-date-picker-content hidden>
+                <div data-ra-heading></div>
+                <div class="row">
+                  <ra-calendar-previous><button type="button">Previous month</button></ra-calendar-previous>
+                  <ra-calendar-next><button type="button">Next month</button></ra-calendar-next>
+                </div>
+                <ra-calendar-grid>
+                  <ra-calendar-weekdays data-ra-weekdays></ra-calendar-weekdays>
+                  <div data-ra-weeks></div>
+                </ra-calendar-grid>
+              </ra-date-picker-content>
+            </ra-date-picker>
+            <ra-date-input aria-label="Issue date"></ra-date-input>
+            <ra-time-input aria-label="Press time"></ra-time-input>
+          </section>
+        </div>
+      </ra-sheet>
+    </div>
+    <script type="module" src="./main.ts"></script>
+    <script type="module">
+      import { toast } from "../src/index.ts";
+      document.querySelector("#mark-button")?.addEventListener("click", () => {
+        const log = document.querySelector("#mark-log");
+        if (log) log.textContent = "Plate marked";
+      });
+      document.querySelector("#post-note")?.addEventListener("click", () => {
+        toast({ title: "Filed", description: "The plate note is on the sheet." });
+      });
+    </script>
+  </body>
+</html>

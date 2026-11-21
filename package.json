@@ -1,0 +1,73 @@
+{
+  "name": "radiant-austerity-ui-kit",
+  "version": "0.1.0",
+  "description": "Ruled cream-and-ink Web Components. Yellow actions, an orange reticle, and striped swatches.",
+  "type": "module",
+  "files": ["dist", "src", "types", "assets", "README.md"],
+  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./theme.css": "./dist/theme.css",
+    "./tokens.css": "./src/tokens.css"
+  },
+  "sideEffects": [
+    "./dist/index.js",
+    "./dist/register.js",
+    "./dist/controls.js",
+    "./src/index.ts",
+    "./src/register.ts",
+    "./src/controls.ts",
+    "./src/forms.ts",
+    "./src/overlays.ts",
+    "./src/layout.ts",
+    "./src/nav.ts",
+    "./src/dates.ts",
+    "./src/display.ts",
+    "./dist/forms.js",
+    "./dist/overlays.js",
+    "./dist/layout.js",
+    "./dist/nav.js",
+    "./dist/dates.js",
+    "./dist/display.js",
+    "./src/theme.css",
+    "./dist/theme.css"
+  ],
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4173",
+    "build:js": "tsc -p tsconfig.build.json",
+    "build:css": "node scripts/bundle-css.mjs",
+    "build": "rm -rf dist && npm run build:js && npm run build:css && vite build",
+    "build:cdn": "vite build --config vite.cdn.config.ts && node scripts/copy-cdn-version.mjs",
+    "build:site": "PAGES_BASE=/radiant-austerity/ vite build && node scripts/assemble-site.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "typecheck": "tsc --noEmit",
+    "test:unit": "node --experimental-strip-types --test test/unit/*.test.ts",
+    "test": "playwright test",
+    "check": "npm run typecheck && npm run test:unit && npm run build && npm run build:cdn && npm run build:site && npm test"
+  },
+  "dependencies": {
+    "@ui-sdk/core": "0.1.0-beta.13",
+    "@ui-sdk/web": "0.1.0-beta.13"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/qrcode": "^1.5.5",
+    "qrcode": "^1.5.4",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "author": "Richard Anaya",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardanaya/radiant-austerity.git"
+  },
+  "keywords": ["ui-sdk", "web-components", "design-system", "radiant-austerity"]
+}

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Radiant Austerity UI Kit 0.1.0 — release sheet</title>
+    <meta name="description" content="Radiant Austerity UI Kit. Cream paper, ink rules, a yellow action, and an orange reticle." />
+    <meta name="theme-color" content="#F1F0DB" />
+    <link rel="canonical" href="https://richardanaya.github.io/radiant-austerity/" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="page">
+      <nav class="nav" aria-label="Sheets">
+        <a href="./" aria-current="page">Fig. 00 · Release sheet</a>
+        <a href="./gallery.html">Fig. 01 · Gallery</a>
+        <a href="./app.html">Fig. 02 · App</a>
+      </nav>
+      <ra-sheet label="Radiant Austerity UI Kit 0.1.0 release notice">
+        <ra-crosshair corner="nw"></ra-crosshair>
+        <ra-crosshair corner="ne"></ra-crosshair>
+        <ra-crosshair corner="sw"></ra-crosshair>
+        <ra-crosshair corner="se"></ra-crosshair>
+        <ra-sheet-margin side="start">Radiant Austerity UI Kit · component library · sheet 1</ra-sheet-margin>
+        <ra-sheet-margin side="end">Rev. 0.1.0 · no. 001 · 2026-11-21</ra-sheet-margin>
+        <header class="mast">
+          <p class="brand"><a href="#wordmark">Radiant Austerity</a></p>
+          <nav class="mast-path" aria-label="On this sheet">
+            <a href="#plate">Plate</a>
+            <span aria-hidden="true">/</span>
+            <a href="#spec">Spec</a>
+            <span aria-hidden="true">/</span>
+            <a href="#changes">Changes</a>
+            <span aria-hidden="true">/</span>
+            <a href="#get">Get it</a>
+          </nav>
+          <p class="est">Est. 2026</p>
+        </header>
+        <div class="stripes" aria-hidden="true">
+          <span class="stripe-y"></span>
+          <span class="stripe-c"></span>
+          <span class="stripe-g"></span>
+          <span class="stripe-m"></span>
+        </div>
+        <main id="main">
+          <section class="field" id="wordmark" aria-labelledby="wordmark-title">
+            <h1 id="wordmark-title" class="wordmark" aria-label="Radiant Austerity">
+              <span class="mark-line" aria-hidden="true">Radiant</span>
+              <span class="mark-line" aria-hidden="true">Austerity</span>
+            </h1>
+            <div class="field-foot">
+              <p class="reticle reticle-lite" aria-hidden="true"><span>R</span></p>
+              <p class="deck">UI kit · release 0.1.0</p>
+            </div>
+          </section>
+          <ra-ruler from="0" to="12"></ra-ruler>
+          <ra-figure id="plate">
+            <ra-figure-media>
+              <img src="./plate.svg" alt="" />
+              <ra-callout letter="A" label="Reticle" x="62%" y="44%"></ra-callout>
+              <ra-callout letter="B" label="Registration square" x="21%" y="32%"></ra-callout>
+              <ra-callout letter="C" label="Hairline" x="18%" y="77%"></ra-callout>
+              <ra-callout letter="D" label="Corner tick" x="90%" y="21%" side="left"></ra-callout>
+            </ra-figure-media>
+            <ra-figure-caption id="plate-caption">
+              <span>Fig. 01 · Ruled plate, kit mark</span>
+              <span>Radiant Austerity UI Kit · drawn 2026-11-21</span>
+            </ra-figure-caption>
+          </ra-figure>
+          <section class="lede">
+            <ra-version-hero value="0.1.0"></ra-version-hero>
+            <div>
+              <p class="kicker">What changed</p>
+              <p class="deck">Web components on the UI SDK. Yellow for the action. Orange for the reticle.</p>
+              <ra-prose class="prose">Cream paper, ink rules, and a sheet with corner dots. The stripes mark categories. They are not buttons.</ra-prose>
+              <div class="pills">
+                <ra-pill variant="yellow">Released 2026-11-21</ra-pill>
+                <ra-pill variant="ink">QC · unit + visual</ra-pill>
+                <a href="./gallery.html"><ra-pill variant="outline">Open gallery</ra-pill></a>
+              </div>
+            </div>
+          </section>
+          <ra-spec-table id="spec" label="Release specification">
+            <ra-spec-row>
+              <ra-spec-cell>
+                <ra-spec-label>Release</ra-spec-label>
+                <ra-spec-value>0.1.0</ra-spec-value>
+              </ra-spec-cell>
+              <ra-spec-cell>
+                <ra-spec-label>Date</ra-spec-label>
+                <ra-spec-value>2026-11-21</ra-spec-value>
+              </ra-spec-cell>
+              <ra-spec-cell>
+                <ra-spec-label>Supersedes</ra-spec-label>
+                <ra-spec-value>—</ra-spec-value>
+              </ra-spec-cell>
+              <ra-spec-cell>
+                <ra-spec-label>Change</ra-spec-label>
+                <ra-spec-value>218 parts</ra-spec-value>
+              </ra-spec-cell>
+              <ra-spec-cell>
+                <ra-spec-label>Lines</ra-spec-label>
+                <ra-spec-value>+ new</ra-spec-value>
+              </ra-spec-cell>
+              <ra-spec-cell>
+                <ra-spec-label>QC</ra-spec-label>
+                <ra-spec-value>Passed</ra-spec-value>
+              </ra-spec-cell>
+            </ra-spec-row>
+          </ra-spec-table>
+          <ra-change-list id="changes" label="What shipped in 0.1.0">
+            <ra-change-item>
+              <ra-change-index>01</ra-change-index>
+              <ra-change-title>Sheet frame</ra-change-title>
+              <ra-tag>Frame</ra-tag>
+              <ra-change-body>A cream sheet, a 2px ink border, corner dots, and a ruler with orange ticks.</ra-change-body>
+            </ra-change-item>
+            <ra-change-item>
+              <ra-change-index>02</ra-change-index>
+              <ra-change-title>Callout</ra-change-title>
+              <ra-tag>Note</ra-tag>
+              <ra-change-body>A square mark, a leader, a letter chip, and a boxed label.</ra-change-body>
+            </ra-change-item>
+            <ra-change-item>
+              <ra-change-index>03</ra-change-index>
+              <ra-change-title>Version mark</ra-change-title>
+              <ra-tag>Type</ra-tag>
+              <ra-change-body>Inter numerals for a release. Geist Serif stays on the wordmark and the prose.</ra-change-body>
+            </ra-change-item>
+            <ra-change-item>
+              <ra-change-index>04</ra-change-index>
+              <ra-change-title>Spec row</ra-change-title>
+              <ra-tag>Table</ra-tag>
+              <ra-change-body>Ruled cells for release, date, supersedes, change, lines, and QC.</ra-change-body>
+            </ra-change-item>
+            <ra-change-item>
+              <ra-change-index>05</ra-change-index>
+              <ra-change-title>Swatches</ra-change-title>
+              <ra-tag>Mark</ra-tag>
+              <ra-change-body>Striped yellow, cyan, lime, and magenta. Ink is the solid field.</ra-change-body>
+            </ra-change-item>
+            <ra-change-item>
+              <ra-change-index>06</ra-change-index>
+              <ra-change-title>Change list</ra-change-title>
+              <ra-tag>List</ra-tag>
+              <ra-change-body>Numbered notes in two columns, with tag chips and ink rules.</ra-change-body>
+            </ra-change-item>
+            <ra-change-item>
+              <ra-change-index>07</ra-change-index>
+              <ra-change-title>Barcode</ra-change-title>
+              <ra-tag>Code 128</ra-tag>
+              <ra-change-body>Bars drawn from a string, with a quiet zone and an Inter caption.</ra-change-body>
+            </ra-change-item>
+            <ra-change-item>
+              <ra-change-index>08</ra-change-index>
+              <ra-change-title>Seal</ra-change-title>
+              <ra-tag>Mark</ra-tag>
+              <ra-change-body>Circular text around an orange reticle. It holds still when motion is reduced.</ra-change-body>
+            </ra-change-item>
+          </ra-change-list>
+          <footer class="plate-foot" id="get">
+            <ra-barcode value="RADIANT-AUSTERITY-0.1.0"></ra-barcode>
+            <div class="qr-block">
+              <ra-qr value="https://richardanaya.github.io/radiant-austerity/"></ra-qr>
+              <p class="kicker">Scan · site</p>
+            </div>
+            <div class="get">
+              <p class="kicker">Get it</p>
+              <p class="url">richardanaya.github.io/radiant-austerity</p>
+              <ra-prose>A fresh install registers every part. This sheet is the demo.</ra-prose>
+            </div>
+            <ra-seal text="RADIANT AUSTERITY UI KIT · RELEASE 0.1.0 · "></ra-seal>
+          </footer>
+          <div class="bar" aria-hidden="true"></div>
+          <footer class="foot">
+            <div class="foot-brand">
+              <p class="foot-name">Radiant Austerity</p>
+              <p class="foot-ethic">A ruled kit<br />for the cream sheet.</p>
+              <p class="foot-note">Ink on cream. Yellow for the action. Orange only where it points.</p>
+            </div>
+            <nav class="foot-nav" aria-label="Footer">
+              <a href="./gallery.html">Gallery</a>
+              <a href="./app.html">Press desk</a>
+              <a href="https://richardanaya.github.io/radiant-austerity/cdn/radiant-austerity.js">CDN script</a>
+            </nav>
+            <div class="foot-mark">
+              <p class="reticle reticle-lite" aria-hidden="true"><span>R</span></p>
+              <p class="foot-year">Est. 2026</p>
+            </div>
+          </footer>
+          <p class="fine">
+            <span>Radiant Austerity UI Kit 0.1.0</span>
+            <span>An engineering plate for a component library</span>
+            <span>Drawn 2026-11-21</span>
+          </p>
+        </main>
+      </ra-sheet>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

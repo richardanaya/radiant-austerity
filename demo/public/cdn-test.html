@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Radiant Austerity UI Kit — CDN</title>
+    <meta name="theme-color" content="#F1F0DB" />
+    <link rel="stylesheet" href="./cdn/radiant-austerity.css" />
+  </head>
+  <body>
+    <main style="max-width: 36rem; margin: 2rem auto; padding: 1rem">
+      <h1>CDN plate</h1>
+      <ra-button>
+        <button type="button" data-variant="yellow" id="cdn-mark">Mark</button>
+      </ra-button>
+      <ra-field>
+        <ra-field-label>Title</ra-field-label>
+        <ra-input>
+          <input id="cdn-title" aria-label="Title" />
+        </ra-input>
+      </ra-field>
+      <label>
+        <ra-checkbox id="cdn-mark-box" aria-label="Mark">
+          <ra-checkbox-indicator></ra-checkbox-indicator>
+        </ra-checkbox>
+        Mark
+      </label>
+      <ra-pill variant="ink">From the CDN</ra-pill>
+      <p id="cdn-log"></p>
+    </main>
+    <script type="module" src="./cdn/radiant-austerity.js"></script>
+    <script type="module">
+      document.querySelector("#cdn-mark")?.addEventListener("click", () => {
+        const log = document.querySelector("#cdn-log");
+        if (log) log.textContent = "Marked from the CDN";
+      });
+    </script>
+  </body>
+</html>

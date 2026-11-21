@@ -1,0 +1,808 @@
+/* Plate treatment for the SDK widgets. Unlayered, so it wins over @layer ui-sdk. */
+
+:where([data-slot]) {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  border-radius: 0;
+}
+
+:where(input, textarea, select) {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/*
+  The SDK hides [data-slot="visually-hidden"] inside @layer ui-sdk with
+  clip-path: inset(50%) only. WebKit paints that text anyway, and this file's
+  unlayered min-height and width rules would beat the layer. Clip it here.
+*/
+[data-slot="visually-hidden"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  min-width: 0;
+  min-height: 0;
+  max-width: 1px;
+  max-height: 1px;
+}
+
+:is(
+  ra-checkbox,
+  ra-radio,
+  ra-switch,
+  ra-slider,
+  ra-select,
+  ra-combobox,
+  ra-autocomplete,
+  ra-listbox,
+  ra-number-input,
+  ra-password-input,
+  ra-otp-input,
+  ra-file-input,
+  ra-rating,
+  ra-accordion,
+  ra-collapsible,
+  ra-scroll-area,
+  ra-progress,
+  ra-meter,
+  ra-calendar,
+  ra-date-picker,
+  ra-date-input,
+  ra-time-input,
+  ra-command,
+  ra-pagination,
+  ra-navigation-menu,
+  ra-toolbar,
+  ra-menubar
+) {
+  font-family: var(--ra-font-mono);
+  font-size: var(--ra-text-xs);
+  letter-spacing: 0.04em;
+}
+
+ra-checkbox,
+ra-radio,
+ra-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+}
+
+ra-checkbox,
+ra-radio {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+}
+
+ra-checkbox[data-checked],
+ra-checkbox[aria-checked="true"] {
+  background: var(--yellow);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+ra-radio[data-checked],
+ra-radio[aria-checked="true"] {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+ra-checkbox {
+  position: relative;
+}
+
+ra-checkbox-indicator {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  background: none;
+}
+
+ra-checkbox-indicator::before {
+  width: 0.72rem;
+  height: 0.72rem;
+}
+
+ra-radio-indicator {
+  width: 0.45rem;
+  height: 0.45rem;
+  background: transparent;
+  border-radius: 0;
+}
+
+ra-radio[data-checked] ra-radio-indicator,
+ra-radio[aria-checked="true"] ra-radio-indicator {
+  background: var(--ink);
+}
+
+ra-switch {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 2.75rem;
+  height: 1.55rem;
+  padding: 2px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--cream);
+}
+
+ra-switch-thumb {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-inline-start: 0;
+  border-radius: 0;
+  background: var(--ink);
+}
+
+ra-switch[data-checked],
+ra-switch[aria-checked="true"] {
+  background: var(--yellow);
+}
+
+ra-switch[data-checked] ra-switch-thumb,
+ra-switch[aria-checked="true"] ra-switch-thumb {
+  margin-inline-start: auto;
+  background: var(--ink);
+}
+
+ra-checkbox-group,
+ra-radio-group,
+ra-segmented-control,
+ra-rating,
+ra-otp-input,
+ra-otp-input-group,
+ra-toolbar,
+ra-menubar,
+ra-pagination,
+ra-pagination-list,
+ra-navigation-menu,
+ra-navigation-menu-list,
+ra-breadcrumb,
+ra-toast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+ra-radio-group {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+ra-segmented-control-item,
+ra-rating-item,
+ra-pagination-link,
+ra-pagination-previous,
+ra-pagination-next,
+ra-toolbar-button,
+ra-menu-item,
+ra-select-item,
+ra-combobox-item,
+ra-autocomplete-item,
+ra-listbox-item,
+ra-command-item,
+ra-trigger-menu-item,
+ra-navigation-menu-trigger,
+ra-accordion-trigger,
+ra-collapsible-trigger {
+  font-family: var(--ra-font-mono);
+  font-size: var(--ra-text-2xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+ra-segmented-control {
+  border: 1px solid var(--ra-ink);
+  padding: 2px;
+}
+
+ra-segmented-control-item[data-checked],
+ra-segmented-control-item[aria-checked="true"],
+ra-listbox-item[data-selected],
+ra-listbox-item[aria-selected="true"],
+ra-command-item[data-selected],
+ra-menu-item[data-highlighted],
+ra-select-item[data-highlighted],
+ra-combobox-item[data-highlighted],
+ra-pagination-link[data-current] {
+  background: var(--ra-ink);
+  color: var(--ra-on-ink);
+}
+
+ra-slider {
+  display: grid;
+  gap: 0.35rem;
+}
+
+ra-slider-control {
+  display: block;
+}
+
+ra-slider-track {
+  position: relative;
+  display: block;
+  height: 1px;
+  background: var(--ra-ink);
+}
+
+ra-slider-thumb {
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--yellow);
+}
+
+ra-number-input,
+ra-number-input-group,
+ra-password-input,
+ra-date-input,
+ra-time-input,
+ra-textarea,
+ra-listbox,
+ra-select,
+ra-combobox,
+ra-autocomplete,
+ra-file-input {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+ra-command {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+ra-number-input-group,
+ra-password-input,
+ra-date-input,
+ra-time-input,
+ra-otp-input-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  border-bottom: 1px solid var(--ra-ink);
+}
+
+ra-password-input,
+ra-date-input,
+ra-time-input {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: auto;
+  min-height: 2.75rem;
+}
+
+ra-number-input-group {
+  flex-wrap: nowrap;
+  border: 0;
+}
+
+ra-number-input-group input {
+  border: 1px solid var(--ra-ink);
+}
+
+ra-number-input-control,
+ra-password-input input,
+ra-number-input-group input {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+ra-number-input-group > button,
+ra-password-input > button {
+  flex: 0 0 auto;
+  max-width: 100%;
+  white-space: normal;
+}
+
+ra-number-input-control input,
+ra-password-input input,
+ra-combobox-input input,
+ra-autocomplete-input input,
+ra-command-input input,
+ra-trigger-menu-input textarea,
+ra-trigger-menu-input input,
+ra-otp-input-control input,
+textarea[data-slot="textarea"] {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: var(--ra-font-mono);
+  font-size: 0.92rem;
+}
+
+ra-number-input-control input {
+  border: 1px solid var(--ra-ink);
+  background: transparent;
+}
+
+ra-date-input-segment,
+ra-time-input-segment {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  width: auto;
+  max-width: none;
+}
+
+ra-date-input-segment input,
+ra-time-input-segment input {
+  width: auto;
+  min-width: 2.2ch;
+  max-width: 6ch;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: var(--ra-font-mono);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+ra-date-input-segment input::placeholder,
+ra-time-input-segment input::placeholder {
+  color: var(--ra-muted);
+  opacity: 1;
+}
+
+ra-file-input > input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+ra-file-input-dropzone {
+  border: 1px dashed var(--ra-ink);
+  padding: 0.7rem;
+}
+
+:is(
+  ra-select-content,
+  ra-combobox-content,
+  ra-autocomplete-content,
+  ra-popover-content,
+  ra-hover-card-content,
+  ra-menu-content,
+  ra-menu-sub-content,
+  ra-trigger-menu-content,
+  ra-navigation-menu-content,
+  ra-date-picker-content,
+  ra-alert-dialog-content,
+  ra-drawer-content,
+  ra-dialog-content,
+  ra-toast
+) {
+  box-sizing: border-box;
+  max-width: calc(100vw - 1rem);
+  min-width: 0;
+  border: 1px solid var(--ra-ink);
+  border-radius: 0;
+  background: var(--ra-paper);
+  color: var(--ra-ink);
+  box-shadow: none;
+  padding: 0.6rem;
+  z-index: 60;
+  overflow-wrap: anywhere;
+}
+
+ra-alert-dialog-title,
+ra-drawer-title,
+ra-popover-title,
+ra-dialog-title {
+  margin: 0;
+  font-family: var(--ra-font-display);
+  font-size: 1.2rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+ra-toast-region {
+  position: fixed;
+  inset: auto;
+  left: max(0.75rem, env(safe-area-inset-left));
+  right: max(0.75rem, env(safe-area-inset-right));
+  inset-inline-start: max(0.75rem, env(safe-area-inset-left));
+  inset-inline-end: max(0.75rem, env(safe-area-inset-right));
+  bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  width: auto;
+  max-width: calc(100% - 1.5rem);
+  margin: 0;
+  translate: none;
+  display: grid;
+  gap: 0.4rem;
+  z-index: 70;
+}
+
+ra-toast {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--ra-ink);
+  background: var(--ra-paper);
+}
+
+ra-toast-title,
+ra-toast-description,
+ra-command-item,
+ra-command-input,
+ra-listbox-item,
+ra-menu-item,
+ra-menubar {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+:is(ra-pagination, ra-toolbar, ra-menubar, ra-command, ra-toast, ra-select, ra-number-input, ra-password-input)
+  :is(button, [role="menuitem"], [role="option"]) {
+  max-width: 100%;
+  white-space: normal;
+}
+
+ra-accordion-item,
+ra-collapsible {
+  border-top: 1px solid var(--ra-ink);
+}
+
+ra-accordion-panel,
+ra-collapsible-panel {
+  padding: 0.4rem 0 0.7rem;
+}
+
+ra-separator,
+ra-menu-separator,
+ra-toolbar-separator {
+  border: 0;
+  border-top: 1px solid var(--ra-ink);
+  height: 0;
+}
+
+ra-toolbar-separator,
+ra-menu-separator {
+  border-top: 0;
+  border-left: 1px solid var(--ra-ink);
+  width: 0;
+  align-self: stretch;
+}
+
+ra-scroll-area {
+  max-height: 8rem;
+}
+
+ra-scroll-area-viewport {
+  max-height: 8rem;
+  overflow: auto;
+}
+
+ra-resizable {
+  display: flex;
+  min-height: 6rem;
+  border: 1px solid var(--ra-ink);
+}
+
+ra-resizable-panel {
+  min-width: 4rem;
+  padding: 0.5rem;
+}
+
+ra-resizable-handle {
+  width: 6px;
+  background: var(--ra-ink);
+  cursor: col-resize;
+}
+
+ra-avatar {
+  display: inline-grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+}
+
+ra-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+ra-progress,
+ra-meter {
+  display: grid;
+  gap: 0.3rem;
+}
+
+ra-progress-track,
+ra-meter-track {
+  height: 4px;
+  background: transparent;
+  border: 1px solid var(--ra-ink);
+}
+
+ra-progress-indicator,
+ra-meter-indicator {
+  height: 100%;
+  background: var(--ink);
+  transform-origin: left center;
+}
+
+ra-card {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.9rem;
+  border: 1px solid var(--ra-ink);
+  background: var(--ra-paper);
+}
+
+ra-alert {
+  padding: 0.55rem 0.7rem;
+  border-left: var(--rule);
+  font-family: var(--sans);
+  font-size: var(--ra-text-xs);
+}
+
+ra-spinner {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 1px solid var(--ink);
+  border-top-color: var(--yellow);
+  border-radius: 0;
+  animation: ra-spin 0.8s linear infinite;
+}
+
+ra-skeleton {
+  display: block;
+  height: 0.8rem;
+  background: var(--ra-paper-deep);
+}
+
+ra-breadcrumb {
+  font-family: var(--ra-font-mono);
+  font-size: var(--ra-text-2xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+ra-breadcrumb-item:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.45rem;
+}
+
+ra-calendar,
+ra-date-picker-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+ra-calendar > .row,
+ra-date-picker-content > .row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+ra-calendar,
+ra-calendar-grid,
+ra-date-picker,
+[data-ra-weeks] {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+ra-calendar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+ra-calendar-weekdays,
+ra-calendar-week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+ra-calendar-day,
+ra-calendar-weekday,
+ra-calendar-week > span {
+  display: grid;
+  place-items: center;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 1.6rem;
+  overflow: hidden;
+  font-family: var(--ra-font-mono);
+  font-size: var(--ra-text-2xs);
+}
+
+ra-calendar-day[data-selected],
+ra-calendar-day[aria-selected="true"] {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+ra-rating-item[data-filled] {
+  color: var(--ink);
+  background: var(--yellow);
+}
+
+@media (max-width: 720px) {
+  :is(
+    button,
+    [role="tab"],
+    [role="menuitem"],
+    [role="option"],
+    ra-segmented-control-item,
+    ra-accordion-trigger,
+    ra-collapsible-trigger,
+    ra-toolbar-button,
+    ra-pagination-link,
+    ra-pagination-previous,
+    ra-pagination-next
+  ) {
+    min-height: 44px;
+  }
+
+  ra-slider-control {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  ra-password-input input {
+    min-height: 44px;
+  }
+
+  :is(
+    [data-slot="calendar-previous"],
+    [data-slot="calendar-next"],
+    [data-slot="date-picker-trigger"],
+    [data-slot="toast-close"],
+    [data-slot="number-input-decrement"],
+    [data-slot="number-input-increment"],
+    [data-slot="password-input-toggle"]
+  ) {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    min-width: 44px;
+    max-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  ra-number-input button {
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  ra-number-input input {
+    min-height: 44px;
+  }
+
+  ra-pagination-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  ra-pagination-item:first-child,
+  ra-pagination-item:last-child {
+    grid-column: 1 / -1;
+  }
+
+  ra-pagination button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  ra-calendar-day {
+    min-height: 44px;
+  }
+
+  :is(ra-dialog-content, ra-alert-dialog-content, [data-slot="dialog-content"], [data-slot="alert-dialog-content"]) {
+    position: fixed;
+    inset: auto 0 0 0;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: min(85dvh, calc(100dvh - 0.75rem));
+    margin: 0;
+    border-bottom: 0;
+    overflow-y: auto;
+  }
+
+  ra-drawer-content,
+  [data-slot="drawer-content"] {
+    width: 100%;
+    max-width: calc(100vw - 1rem);
+  }
+
+  [data-slot="drawer-content"]::after {
+    display: none;
+  }
+
+  ra-toolbar input,
+  ra-command input,
+  textarea[data-slot="textarea"] {
+    min-height: 44px;
+  }
+
+  label:has(:is(ra-checkbox, ra-radio, ra-switch)) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ra-spinner {
+    animation: none;
+  }
+}

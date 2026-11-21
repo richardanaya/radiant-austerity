@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="Ruled plate with an orange reticle">
+  <rect width="1200" height="520" fill="#f1f0db"/>
+  <g stroke="#171816" stroke-width="1" fill="none">
+    <path d="M40 40 H1160 M40 120 H1160 M40 200 H1160 M40 280 H1160 M40 360 H1160 M40 440 H1160"/>
+    <path d="M80 20 V500 M200 20 V500 M320 20 V500 M440 20 V500 M560 20 V500 M680 20 V500 M800 20 V500 M920 20 V500 M1040 20 V500"/>
+  </g>
+  <g fill="none" stroke="#171816" stroke-width="1.25">
+    <rect x="196" y="114" width="108" height="108"/>
+    <rect x="216" y="134" width="68" height="68"/>
+    <path d="M90 400 H430"/>
+    <path d="M90 392 V408 M430 392 V408"/>
+    <path d="M150 430 H250"/>
+    <path d="M150 424 V436 M250 424 V436"/>
+  </g>
+  <text x="168" y="428" fill="#171816" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="650" letter-spacing="1.5">120</text>
+  <text x="214" y="392" fill="#171816" font-family="Inter, Helvetica, Arial, sans-serif" font-size="13" font-weight="650" letter-spacing="1.5">108</text>
+  <g fill="none" stroke="#fe4a08" stroke-width="2">
+    <path d="M620 150 H633 V163 M860 150 H847 V163 M860 310 H847 V297 M620 310 H633 V297"/>
+    <path d="M1040 70 H1053 V83 M1120 70 H1107 V83 M1120 150 H1107 V137 M1040 150 H1053 V137"/>
+  </g>
+  <g stroke="#171816" fill="none" stroke-width="1.25">
+    <path d="M1040 62 V78 M1120 62 V78 M1112 150 H1128 M1112 70 H1128"/>
+  </g>
+  <g>
+    <rect x="690" y="188" width="28" height="84" fill="#f9c602"/>
+    <rect x="718" y="188" width="28" height="84" fill="url(#stripe-c)"/>
+    <rect x="746" y="188" width="28" height="84" fill="url(#stripe-g)"/>
+    <rect x="774" y="188" width="28" height="84" fill="url(#stripe-m)"/>
+  </g>
+  <defs>
+    <pattern id="stripe-c" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect width="12" height="12" fill="#f1f0db"/>
+      <rect width="6" height="12" fill="#02d7e3"/>
+    </pattern>
+    <pattern id="stripe-g" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect width="12" height="12" fill="#f1f0db"/>
+      <rect width="6" height="12" fill="#54d815"/>
+    </pattern>
+    <pattern id="stripe-m" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect width="12" height="12" fill="#f1f0db"/>
+      <rect width="6" height="12" fill="#fb66c9"/>
+    </pattern>
+  </defs>
+  <g fill="#171816" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" font-weight="650" letter-spacing="1.6">
+    <text x="78" y="70">PLATE RM-01</text>
+    <text x="78" y="90">SCALE 1 : 1</text>
+    <text x="78" y="110">INK / CREAM</text>
+  </g>
+</svg>
